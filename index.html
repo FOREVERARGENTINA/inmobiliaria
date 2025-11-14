@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encuentra la propiedad de tus sueños. Amplia selección de casas, apartamentos y locales comerciales.">
+    <meta name="keywords" content="inmobiliaria, casas, apartamentos, propiedades, venta, alquiler">
+    <title>InmoPlus - Tu Inmobiliaria de Confianza</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2>InmoPlus</h2>
+            </div>
+            <ul class="nav__menu" id="navMenu">
+                <li class="nav__item"><a href="#inicio" class="nav__link">Inicio</a></li>
+                <li class="nav__item"><a href="#propiedades" class="nav__link">Propiedades</a></li>
+                <li class="nav__item"><a href="#servicios" class="nav__link">Servicios</a></li>
+                <li class="nav__item"><a href="#nosotros" class="nav__link">Nosotros</a></li>
+                <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
+            </ul>
+            <div class="nav__toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero__overlay"></div>
+        <div class="hero__content container">
+            <h1 class="hero__title">Encuentra Tu Hogar Ideal</h1>
+            <p class="hero__description">Miles de propiedades esperándote. La mejor selección del mercado.</p>
+
+            <!-- Search Form -->
+            <div class="search-box">
+                <div class="search-box__tabs">
+                    <button class="search-tab active" data-type="venta">Comprar</button>
+                    <button class="search-tab" data-type="alquiler">Alquilar</button>
+                </div>
+                <form class="search-form" id="searchForm">
+                    <div class="search-form__group">
+                        <select class="search-input" id="propertyType">
+                            <option value="">Tipo de Propiedad</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="local">Local Comercial</option>
+                            <option value="terreno">Terreno</option>
+                        </select>
+                    </div>
+                    <div class="search-form__group">
+                        <input type="text" class="search-input" placeholder="Ubicación" id="location">
+                    </div>
+                    <div class="search-form__group">
+                        <select class="search-input" id="priceRange">
+                            <option value="">Rango de Precio</option>
+                            <option value="0-100000">Hasta $100,000</option>
+                            <option value="100000-200000">$100,000 - $200,000</option>
+                            <option value="200000-300000">$200,000 - $300,000</option>
+                            <option value="300000+">Más de $300,000</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn--primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="properties" id="propiedades">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Propiedades Destacadas</h2>
+                <p class="section__description">Descubre nuestra selección de propiedades más populares</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="venta">En Venta</button>
+                <button class="filter-btn" data-filter="alquiler">En Alquiler</button>
+            </div>
+
+            <div class="properties__grid" id="propertiesGrid">
+                <!-- Property Card 1 -->
+                <article class="property-card" data-category="venta">
+                    <div class="property-card__badge property-card__badge--sale">En Venta</div>
+                    <div class="property-card__image">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=400&fit=crop" alt="Casa moderna" loading="lazy">
+                    </div>
+                    <div class="property-card__content">
+                        <h3 class="property-card__title">Casa Moderna en Zona Premium</h3>
+                        <p class="property-card__location">📍 Centro, Ciudad</p>
+                        <div class="property-card__features">
+                            <span class="feature">🛏️ 4 Hab</span>
+                            <span class="feature">🚿 3 Baños</span>
+                            <span class="feature">📐 250 m²</span>
+                        </div>
+                        <div class="property-card__footer">
+                            <p class="property-card__price">$285,000</p>
+                            <button class="btn btn--secondary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 2 -->
+                <article class="property-card" data-category="alquiler">
+                    <div class="property-card__badge property-card__badge--rent">En Alquiler</div>
+                    <div class="property-card__image">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop" alt="Apartamento lujoso" loading="lazy">
+                    </div>
+                    <div class="property-card__content">
+                        <h3 class="property-card__title">Apartamento Lujoso con Vista</h3>
+                        <p class="property-card__location">📍 Norte, Ciudad</p>
+                        <div class="property-card__features">
+                            <span class="feature">🛏️ 2 Hab</span>
+                            <span class="feature">🚿 2 Baños</span>
+                            <span class="feature">📐 120 m²</span>
+                        </div>
+                        <div class="property-card__footer">
+                            <p class="property-card__price">$1,200/mes</p>
+                            <button class="btn btn--secondary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 3 -->
+                <article class="property-card" data-category="venta">
+                    <div class="property-card__badge property-card__badge--sale">En Venta</div>
+                    <div class="property-card__image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop" alt="Villa moderna" loading="lazy">
+                    </div>
+                    <div class="property-card__content">
+                        <h3 class="property-card__title">Villa Moderna con Piscina</h3>
+                        <p class="property-card__location">📍 Sur, Ciudad</p>
+                        <div class="property-card__features">
+                            <span class="feature">🛏️ 5 Hab</span>
+                            <span class="feature">🚿 4 Baños</span>
+                            <span class="feature">📐 380 m²</span>
+                        </div>
+                        <div class="property-card__footer">
+                            <p class="property-card__price">$450,000</p>
+                            <button class="btn btn--secondary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 4 -->
+                <article class="property-card" data-category="alquiler">
+                    <div class="property-card__badge property-card__badge--rent">En Alquiler</div>
+                    <div class="property-card__image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop" alt="Apartamento céntrico" loading="lazy">
+                    </div>
+                    <div class="property-card__content">
+                        <h3 class="property-card__title">Apartamento Céntrico Amueblado</h3>
+                        <p class="property-card__location">📍 Centro, Ciudad</p>
+                        <div class="property-card__features">
+                            <span class="feature">🛏️ 3 Hab</span>
+                            <span class="feature">🚿 2 Baños</span>
+                            <span class="feature">📐 95 m²</span>
+                        </div>
+                        <div class="property-card__footer">
+                            <p class="property-card__price">$950/mes</p>
+                            <button class="btn btn--secondary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 5 -->
+                <article class="property-card" data-category="venta">
+                    <div class="property-card__badge property-card__badge--sale">En Venta</div>
+                    <div class="property-card__image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Casa familiar" loading="lazy">
+                    </div>
+                    <div class="property-card__content">
+                        <h3 class="property-card__title">Casa Familiar con Jardín</h3>
+                        <p class="property-card__location">📍 Oeste, Ciudad</p>
+                        <div class="property-card__features">
+                            <span class="feature">🛏️ 3 Hab</span>
+                            <span class="feature">🚿 2 Baños</span>
+                            <span class="feature">📐 180 m²</span>
+                        </div>
+                        <div class="property-card__footer">
+                            <p class="property-card__price">$195,000</p>
+                            <button class="btn btn--secondary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 6 -->
+                <article class="property-card" data-category="venta">
+                    <div class="property-card__badge property-card__badge--sale">En Venta</div>
+                    <div class="property-card__image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Penthouse" loading="lazy">
+                    </div>
+                    <div class="property-card__content">
+                        <h3 class="property-card__title">Penthouse de Lujo</h3>
+                        <p class="property-card__location">📍 Torre Premium, Ciudad</p>
+                        <div class="property-card__features">
+                            <span class="feature">🛏️ 4 Hab</span>
+                            <span class="feature">🚿 3 Baños</span>
+                            <span class="feature">📐 220 m²</span>
+                        </div>
+                        <div class="property-card__footer">
+                            <p class="property-card__price">$580,000</p>
+                            <button class="btn btn--secondary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Nuestros Servicios</h2>
+                <p class="section__description">Ofrecemos soluciones completas para todas tus necesidades inmobiliarias</p>
+            </div>
+            <div class="services__grid">
+                <div class="service-card">
+                    <div class="service-card__icon">🏠</div>
+                    <h3 class="service-card__title">Compra y Venta</h3>
+                    <p class="service-card__description">Asesoría profesional en la compra y venta de propiedades con el mejor precio del mercado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🔑</div>
+                    <h3 class="service-card__title">Alquiler</h3>
+                    <p class="service-card__description">Gestión integral de alquileres. Encontramos el inquilino perfecto para tu propiedad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">💼</div>
+                    <h3 class="service-card__title">Asesoría Legal</h3>
+                    <p class="service-card__description">Soporte legal completo para todos tus trámites inmobiliarios y documentación.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">📊</div>
+                    <h3 class="service-card__title">Valoración</h3>
+                    <p class="service-card__description">Tasación profesional de propiedades con análisis de mercado actualizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="about__content">
+                <div class="about__text">
+                    <h2 class="section__title">Más de 15 Años de Experiencia</h2>
+                    <p>En <strong>InmoPlus</strong> somos líderes en el mercado inmobiliario, comprometidos con ayudarte a encontrar la propiedad perfecta para ti y tu familia.</p>
+                    <p>Nuestro equipo de profesionales altamente capacitados te brindará la mejor atención y asesoría personalizada en cada paso del proceso.</p>
+                    <div class="about__stats">
+                        <div class="stat">
+                            <h3 class="stat__number">2,500+</h3>
+                            <p class="stat__label">Propiedades Vendidas</p>
+                        </div>
+                        <div class="stat">
+                            <h3 class="stat__number">5,000+</h3>
+                            <p class="stat__label">Clientes Satisfechos</p>
+                        </div>
+                        <div class="stat">
+                            <h3 class="stat__number">15+</h3>
+                            <p class="stat__label">Años de Experiencia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about__image">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop" alt="Equipo InmoPlus" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Contáctanos</h2>
+                <p class="section__description">¿Tienes alguna pregunta? Estamos aquí para ayudarte</p>
+            </div>
+            <div class="contact__content">
+                <div class="contact__info">
+                    <div class="contact__item">
+                        <div class="contact__item-icon">📍</div>
+                        <div>
+                            <h3>Dirección</h3>
+                            <p>Av. Principal 123, Ciudad</p>
+                        </div>
+                    </div>
+                    <div class="contact__item">
+                        <div class="contact__item-icon">📞</div>
+                        <div>
+                            <h3>Teléfono</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact__item">
+                        <div class="contact__item-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@inmoplus.com</p>
+                        </div>
+                    </div>
+                    <div class="contact__item">
+                        <div class="contact__item-icon">🕐</div>
+                        <div>
+                            <h3>Horario</h3>
+                            <p>Lun - Vie: 9:00 - 18:00</p>
+                            <p>Sáb: 10:00 - 14:00</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact__form" id="contactForm">
+                    <div class="form__group">
+                        <input type="text" class="form__input" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form__group">
+                        <input type="email" class="form__input" placeholder="Email" required>
+                    </div>
+                    <div class="form__group">
+                        <input type="tel" class="form__input" placeholder="Teléfono" required>
+                    </div>
+                    <div class="form__group">
+                        <select class="form__input" required>
+                            <option value="">Tipo de consulta</option>
+                            <option value="compra">Comprar Propiedad</option>
+                            <option value="venta">Vender Propiedad</option>
+                            <option value="alquiler">Alquilar</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <textarea class="form__input form__textarea" placeholder="Mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">InmoPlus</h3>
+                    <p class="footer__description">Tu socio de confianza en el mercado inmobiliario. Hacemos realidad el hogar de tus sueños.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Enlaces Rápidos</h4>
+                    <ul class="footer__links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#propiedades">Propiedades</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Servicios</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Compra y Venta</a></li>
+                        <li><a href="#">Alquiler</a></li>
+                        <li><a href="#">Asesoría Legal</a></li>
+                        <li><a href="#">Valoración</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Newsletter</h4>
+                    <p>Suscríbete para recibir las mejores ofertas</p>
+                    <form class="newsletter__form">
+                        <input type="email" placeholder="Tu email" class="newsletter__input">
+                        <button type="submit" class="btn btn--primary">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 InmoPlus. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

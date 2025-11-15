@@ -129,7 +129,7 @@ function displayPropertyHeader(property) {
     statusBadge.className = `property-status-badge ${property.status}`;
 
     document.getElementById('propertyTitle').textContent = property.title;
-    document.getElementById('propertyLocation').textContent = `📍 ${property.location}`;
+    document.getElementById('propertyLocation').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${property.location}`;
     document.getElementById('propertyPrice').textContent = `$${formatNumber(property.price)}`;
 }
 
@@ -190,27 +190,27 @@ function displayPropertyInfo(property) {
     // Features
     const featuresHtml = `
         ${property.bedrooms ? `
-        <div class="feature-item">
-            <div class="feature-icon">🛏️</div>
+            <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-bed"></i></div>
             <div class="feature-label">Habitaciones</div>
             <div class="feature-value">${property.bedrooms}</div>
         </div>
         ` : ''}
         ${property.bathrooms ? `
-        <div class="feature-item">
-            <div class="feature-icon">🚿</div>
+            <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-bath"></i></div>
             <div class="feature-label">Baños</div>
             <div class="feature-value">${property.bathrooms}</div>
         </div>
         ` : ''}
         ${property.area ? `
-        <div class="feature-item">
-            <div class="feature-icon">📐</div>
+            <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-ruler-combined"></i></div>
             <div class="feature-label">Área</div>
             <div class="feature-value">${property.area} m²</div>
         </div>
         ` : ''}
-        <div class="feature-item">
+            <div class="feature-item">
             <div class="feature-icon">${getTypeIcon(property.type)}</div>
             <div class="feature-label">Tipo</div>
             <div class="feature-value">${getTypeName(property.type)}</div>
@@ -346,11 +346,11 @@ async function loadRelatedProperties(property) {
                     </div>
                     <div class="property-card__content">
                         <h3 class="property-card__title">${prop.title}</h3>
-                        <p class="property-card__location">📍 ${prop.location}</p>
+                        <p class="property-card__location"><i class="fa-solid fa-location-dot"></i> ${prop.location}</p>
                         <div class="property-card__features">
-                            ${prop.bedrooms ? `<span>🛏️ ${prop.bedrooms}</span>` : ''}
-                            ${prop.bathrooms ? `<span>🚿 ${prop.bathrooms}</span>` : ''}
-                            ${prop.area ? `<span>📐 ${prop.area} m²</span>` : ''}
+                            ${prop.bedrooms ? `<span><i class="fa-solid fa-bed"></i> ${prop.bedrooms}</span>` : ''}
+                            ${prop.bathrooms ? `<span><i class="fa-solid fa-bath"></i> ${prop.bathrooms}</span>` : ''}
+                            ${prop.area ? `<span><i class="fa-solid fa-ruler-combined"></i> ${prop.area} m²</span>` : ''}
                         </div>
                         <div class="property-card__footer">
                             <span class="property-card__price">$${formatNumber(prop.price)}</span>
@@ -386,12 +386,12 @@ function getTypeName(type) {
 
 function getTypeIcon(type) {
     const icons = {
-        'casa': '🏠',
-        'apartamento': '🏢',
-        'local': '🏪',
-        'terreno': '🌳'
+        'casa': '<i class="fa-solid fa-house"></i>',
+        'apartamento': '<i class="fa-solid fa-building"></i>',
+        'local': '<i class="fa-solid fa-store"></i>',
+        'terreno': '<i class="fa-solid fa-tree"></i>'
     };
-    return icons[type] || '🏠';
+    return icons[type] || '<i class="fa-solid fa-house"></i>';
 }
 
 function showToast(type, title, message) {
@@ -403,10 +403,10 @@ function showToast(type, title, message) {
 
     let icon = '';
     switch (type) {
-        case 'success': icon = '✓'; break;
-        case 'error': icon = '✕'; break;
-        case 'warning': icon = '⚠'; break;
-        default: icon = 'ℹ';
+        case 'success': icon = '<i class="fa-solid fa-check"></i>'; break;
+        case 'error': icon = '<i class="fa-solid fa-xmark"></i>'; break;
+        case 'warning': icon = '<i class="fa-solid fa-triangle-exclamation"></i>'; break;
+        default: icon = '<i class="fa-solid fa-info"></i>';
     }
 
     toast.innerHTML = `

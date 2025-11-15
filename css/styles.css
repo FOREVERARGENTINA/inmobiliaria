@@ -418,6 +418,11 @@ button {
     font-size: 0.95rem;
 }
 
+.property-card__location i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
 .property-card__features {
     display: flex;
     gap: 15px;
@@ -430,6 +435,13 @@ button {
 .feature {
     font-size: 0.9rem;
     color: var(--text-light);
+}
+
+.feature i {
+    margin-right: 6px;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    vertical-align: middle;
 }
 
 .property-card__footer {
@@ -576,6 +588,11 @@ button {
 .contact__item-icon {
     font-size: 2rem;
     min-width: 50px;
+}
+
+.contact__item-icon i {
+    color: var(--primary-color);
+    font-size: 1.6rem;
 }
 
 .contact__item h3 {

@@ -143,7 +143,7 @@ async function loadProperties() {
         console.error('Error loading properties:', error);
         propertiesList.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">⚠️</div>
+                <div class="empty-state-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
                 <h3>Error al cargar propiedades</h3>
                 <p>${error.message}</p>
                 <button class="btn btn-primary" onclick="loadProperties()">Reintentar</button>
@@ -161,7 +161,7 @@ function displayProperties(propertiesToShow) {
     if (propertiesToShow.length === 0) {
         propertiesList.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">🏠</div>
+                <div class="empty-state-icon"><i class="fa-solid fa-house"></i></div>
                 <h3>No hay propiedades</h3>
                 <p>Comienza agregando tu primera propiedad</p>
                 <button class="btn btn-primary" onclick="showAddPropertyForm()">Agregar Propiedad</button>
@@ -173,29 +173,29 @@ function displayProperties(propertiesToShow) {
     propertiesList.innerHTML = propertiesToShow.map(property => `
         <div class="property-item" data-id="${property.id}">
             <img
-                src="${property.images && property.images[0] ? property.images[0] : 'https://via.placeholder.com/400x300?text=Sin+Imagen'}"
+                src="${property.images && property.images[0] ? property.images[0] : 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&h=300&fit=crop'}"
                 alt="${property.title}"
                 class="property-image"
             >
             <div class="property-body">
                 <span class="property-status-badge ${property.status}">${property.status === 'venta' ? 'En Venta' : 'En Alquiler'}</span>
                 <h3 class="property-title">${property.title}</h3>
-                <p class="property-location">📍 ${property.location}</p>
+                <p class="property-location"><i class="fa-solid fa-location-dot"></i> ${property.location}</p>
 
                 <div class="property-details">
-                    ${property.bedrooms ? `<span class="property-detail">🛏️ ${property.bedrooms}</span>` : ''}
-                    ${property.bathrooms ? `<span class="property-detail">🚿 ${property.bathrooms}</span>` : ''}
-                    ${property.area ? `<span class="property-detail">📐 ${property.area} m²</span>` : ''}
+                    ${property.bedrooms ? `<span class="property-detail"><i class="fa-solid fa-bed"></i> ${property.bedrooms}</span>` : ''}
+                    ${property.bathrooms ? `<span class="property-detail"><i class="fa-solid fa-bath"></i> ${property.bathrooms}</span>` : ''}
+                    ${property.area ? `<span class="property-detail"><i class="fa-solid fa-ruler-combined"></i> ${property.area} m²</span>` : ''}
                 </div>
 
                 <p class="property-price">$${formatNumber(property.price)}</p>
 
                 <div class="property-actions">
                     <button class="btn-icon btn-edit" onclick="editProperty('${property.id}')">
-                        ✏️ Editar
+                        <i class="fa-solid fa-pen"></i> Editar
                     </button>
                     <button class="btn-icon btn-delete" onclick="confirmDeleteProperty('${property.id}')">
-                        🗑️ Eliminar
+                        <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
                 </div>
             </div>
@@ -627,10 +627,10 @@ function showToast(type, title, message) {
 
     let icon = '';
     switch (type) {
-        case 'success': icon = '✓'; break;
-        case 'error': icon = '✕'; break;
-        case 'warning': icon = '⚠'; break;
-        default: icon = 'ℹ';
+        case 'success': icon = '<i class="fa-solid fa-check"></i>'; break;
+        case 'error': icon = '<i class="fa-solid fa-xmark"></i>'; break;
+        case 'warning': icon = '<i class="fa-solid fa-triangle-exclamation"></i>'; break;
+        default: icon = '<i class="fa-solid fa-info"></i>';
     }
 
     toast.innerHTML = `

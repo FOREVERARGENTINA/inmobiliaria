@@ -100,7 +100,7 @@ service firebase.storage {
 
 ## Paso 5: Obtener Configuración de Firebase
 
-1. En el menú lateral, click en el ícono de **engranaje ⚙️** > **"Project settings"**
+1. En el menú lateral, click en el ícono de engranaje > **"Project settings"**
 2. Baja hasta la sección **"Your apps"**
 3. Click en el ícono **</>** (Web)
 4. Registra tu app:
@@ -160,7 +160,7 @@ php -S localhost:8000
 
 ### 7.2 Crear una Cuenta
 
-1. En el sitio, click en **"🔐 Admin"** en el menú
+1. En el sitio, click en **"Admin"** en el menú
 2. Click en **"Regístrate aquí"**
 3. Completa el formulario:
    - Nombre: Tu nombre
@@ -172,7 +172,7 @@ Si todo está correcto, serás redirigido al dashboard.
 
 ### 7.3 Agregar una Propiedad
 
-1. En el dashboard, click en **"➕ Nueva Propiedad"**
+1. En el dashboard, click en **"Nueva Propiedad"**
 2. Completa el formulario:
    - Título: "Casa Moderna de Prueba"
    - Tipo: Casa
@@ -271,4 +271,4 @@ Si tienes problemas:
 
 ---
 
-¡Listo! Ahora tu sitio de inmobiliaria está completamente funcional con Firebase 🎉
+¡Listo! Ahora tu sitio de inmobiliaria está completamente funcional con Firebase

@@ -1,18 +1,19 @@
 # InmoPlus - Sitio Web de Inmobiliaria
 
 Sitio web moderno, optimizado y responsive para una inmobiliaria, desarrollado con HTML5, CSS3, JavaScript vanilla y **Firebase**.
+Usa íconos profesionales mediante [Font Awesome](https://fontawesome.com/) en lugar de emojis para mantener una apariencia consistente y profesional.
 
-## 🚀 Nuevo: Sistema de Gestión Completo con Firebase
+## Nuevo: Sistema de Gestión Completo con Firebase
 
 ### Características Principales
-- ✅ **Dashboard de Administración** - Panel completo para gestionar propiedades
-- ✅ **Sistema de Autenticación** - Login y registro con Firebase Auth
-- ✅ **CRUD de Propiedades** - Crear, editar y eliminar propiedades en tiempo real
-- ✅ **Subida de Imágenes** - Múltiples imágenes por propiedad con Firebase Storage
-- ✅ **Base de Datos en Tiempo Real** - Firestore para almacenar propiedades
-- ✅ **Filtros y Búsqueda** - Sistema avanzado de filtrado
-- ✅ **Estadísticas** - Dashboard con métricas de tus propiedades
-- ✅ **Responsive** - Dashboard funciona perfectamente en móviles
+- ✓ **Dashboard de Administración** - Panel completo para gestionar propiedades
+- ✓ **Sistema de Autenticación** - Login y registro con Firebase Auth
+- ✓ **CRUD de Propiedades** - Crear, editar y eliminar propiedades en tiempo real
+- ✓ **Subida de Imágenes** - Múltiples imágenes por propiedad con Firebase Storage
+- ✓ **Base de Datos en Tiempo Real** - Firestore para almacenar propiedades
+- ✓ **Filtros y Búsqueda** - Sistema avanzado de filtrado
+- ✓ **Estadísticas** - Dashboard con métricas de tus propiedades
+- ✓ **Responsive** - Dashboard funciona perfectamente en móviles
 
 ### Cómo Empezar
 
@@ -40,7 +41,7 @@ Luego abre `http://localhost:8000` en tu navegador.
 
 #### 3. Acceder al Dashboard
 
-1. Click en **"🔐 Admin"** en el menú de navegación
+1. Click en **"Admin"** en el menú de navegación
 2. Regístrate con tu email y contraseña
 3. ¡Comienza a agregar propiedades!
 
@@ -218,15 +219,15 @@ Reemplaza las URLs de Unsplash en `index.html` con tus propias imágenes:
 ## Funcionalidades JavaScript
 
 ### Interacciones Principales
-- ✅ Toggle de menú móvil
-- ✅ Filtrado de propiedades
-- ✅ Búsqueda de propiedades
-- ✅ Validación de formularios
-- ✅ Notificaciones de usuario
-- ✅ Scroll to top
-- ✅ Smooth scrolling
-- ✅ Lazy loading de imágenes
-- ✅ Animaciones on scroll (Intersection Observer)
+- ✓ Toggle de menú móvil
+- ✓ Filtrado de propiedades
+- ✓ Búsqueda de propiedades
+- ✓ Validación de formularios
+- ✓ Notificaciones de usuario
+- ✓ Scroll to top
+- ✓ Smooth scrolling
+- ✓ Lazy loading de imágenes
+- ✓ Animaciones on scroll (Intersection Observer)
 
 ## Próximas Mejoras Sugeridas
 
@@ -246,23 +247,23 @@ Reemplaza las URLs de Unsplash en `index.html` con tus propias imágenes:
 ## Optimizaciones Implementadas
 
 ### Performance
-- ⚡ Sin dependencias externas pesadas
-- ⚡ Lazy loading de imágenes
-- ⚡ CSS optimizado con variables
-- ⚡ JavaScript vanilla (sin jQuery)
-- ⚡ Animaciones con GPU acceleration
+- Performance: Sin dependencias externas pesadas
+- Performance: Lazy loading de imágenes
+- Performance: CSS optimizado con variables
+- Performance: JavaScript vanilla (sin jQuery)
+- Performance: Animaciones con GPU acceleration
 
 ### SEO
-- 🔍 Meta tags completos
-- 🔍 HTML semántico
-- 🔍 URLs amigables (preparado para)
-- 🔍 Estructura de headings correcta
+- SEO: Meta tags completos
+- SEO: HTML semántico
+- SEO: URLs amigables (preparado para)
+- SEO: Estructura de headings correcta
 
 ### Accesibilidad
-- ♿ Formularios accesibles
-- ♿ Contraste de colores WCAG AA
-- ♿ Soporte para motion reduce
-- ♿ Navegación por teclado
+- Accesibilidad: Formularios accesibles
+- Accesibilidad: Contraste de colores WCAG AA
+- Accesibilidad: Soporte para motion reduce
+- Accesibilidad: Navegación por teclado
 
 ## Licencia
 
@@ -274,4 +275,4 @@ Para preguntas o sugerencias sobre este proyecto, por favor abre un issue en el 
 
 ---
 
-**Desarrollado con ❤️ para el sector inmobiliario**
+**Desarrollado con dedicación para el sector inmobiliario**

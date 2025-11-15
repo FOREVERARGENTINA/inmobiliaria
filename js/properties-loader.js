@@ -44,7 +44,7 @@ async function loadPropertiesFromFirebase() {
             // No properties found - show static ones or empty state
             propertiesGrid.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-                    <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;">🏠</div>
+                    <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;"><i class="fa-solid fa-house"></i></div>
                     <h3 style="color: #1f2937; margin-bottom: 10px;">No hay propiedades disponibles</h3>
                     <p style="color: #6b7280;">Vuelve pronto para ver nuevas propiedades</p>
                 </div>
@@ -109,11 +109,11 @@ function displayPropertiesOnSite(properties) {
                 </div>
                 <div class="property-card__content">
                     <h3 class="property-card__title">${property.title}</h3>
-                    <p class="property-card__location">📍 ${property.location}</p>
+                    <p class="property-card__location"><i class="fa-solid fa-location-dot"></i> ${property.location}</p>
                     <div class="property-card__features">
-                        ${property.bedrooms ? `<span class="feature">🛏️ ${property.bedrooms} Hab</span>` : ''}
-                        ${property.bathrooms ? `<span class="feature">🚿 ${property.bathrooms} Baños</span>` : ''}
-                        ${property.area ? `<span class="feature">📐 ${property.area} m²</span>` : ''}
+                        ${property.bedrooms ? `<span class="feature"><i class="fa-solid fa-bed"></i> ${property.bedrooms} Hab</span>` : ''}
+                        ${property.bathrooms ? `<span class="feature"><i class="fa-solid fa-bath"></i> ${property.bathrooms} Baños</span>` : ''}
+                        ${property.area ? `<span class="feature"><i class="fa-solid fa-ruler-combined"></i> ${property.area} m²</span>` : ''}
                     </div>
                     <div class="property-card__footer">
                         <p class="property-card__price">${priceText}</p>

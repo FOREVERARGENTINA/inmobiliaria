@@ -1,10 +1,10 @@
-# 🔥 Cómo Configurar Firebase
+# Cómo Configurar Firebase
 
 Para que el sitio funcione, necesitas configurar Firebase con tus propias credenciales.
 
 ---
 
-## 📋 Paso 1: Crear Proyecto en Firebase
+## Paso 1: Crear Proyecto en Firebase
 
 1. **Ve a Firebase Console:**
    ```
@@ -27,14 +27,14 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## 📱 Paso 2: Registrar tu App Web
+## Paso 2: Registrar tu App Web
 
 1. **En el Dashboard del proyecto:**
    - Click en el ícono web `</>`
 
 2. **Registra tu app:**
    - Nombre: `InmoPlus Web`
-   - ☑️ Firebase Hosting (opcional, pero recomendado)
+   - ✓ Firebase Hosting (opcional, pero recomendado)
    - Click "Registrar app"
 
 3. **Copia la configuración:**
@@ -54,7 +54,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## ⚙️ Paso 3: Configurar el Proyecto Local
+## Paso 3: Configurar el Proyecto Local
 
 1. **Abre el archivo:**
    ```
@@ -91,7 +91,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## 🔐 Paso 4: Habilitar Authentication
+## Paso 4: Habilitar Authentication
 
 1. **Firebase Console → Authentication**
 
@@ -100,12 +100,12 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 3. **Click en "Email/Password"**
 
 4. **Habilitar:**
-   - ☑️ Email/Password
+   - ✓ Email/Password
    - Click "Guardar"
 
 ---
 
-## 💾 Paso 5: Configurar Firestore Database
+## Paso 5: Configurar Firestore Database
 
 1. **Firebase Console → Firestore Database**
 
@@ -145,7 +145,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## 📦 Paso 6: Configurar Storage
+## Paso 6: Configurar Storage
 
 1. **Firebase Console → Storage**
 
@@ -180,7 +180,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## ✅ Paso 7: Verificar que Funciona
+## Paso 7: Verificar que Funciona
 
 1. **Recarga la página** (Ctrl + F5 o Cmd + Shift + R)
 
@@ -188,7 +188,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 3. **Deberías ver:**
    ```
-   ✅ Firebase inicializado correctamente
+   ✓ Firebase inicializado correctamente
    ```
 
 4. **Si ves errores:**
@@ -197,7 +197,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## 🚀 Paso 8: Crear tu Primera Cuenta
+## Paso 8: Crear tu Primera Cuenta
 
 1. **Ve a:**
    ```
@@ -213,11 +213,11 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 4. **Click en "Crear Cuenta"**
 
-5. **Serás redirigido al Dashboard** ✅
+5. **Serás redirigido al Dashboard**
 
 ---
 
-## 🏠 Paso 9: Crear Propiedades de Ejemplo
+## Paso 9: Crear Propiedades de Ejemplo
 
 1. **Ve a:**
    ```
@@ -234,32 +234,32 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Error: "Firebase no está configurado"
-- ✅ Verifica que reemplazaste `TU_API_KEY` con tus credenciales reales
-- ✅ Guarda el archivo `firebase-config.js`
-- ✅ Recarga la página (Ctrl + F5)
+ - ✓ Verifica que reemplazaste `TU_API_KEY` con tus credenciales reales
+ - ✓ Guarda el archivo `firebase-config.js`
+ - ✓ Recarga la página (Ctrl + F5)
 
 ### Error: "auth/user-not-found"
-- ✅ Primero regístrate en `/login.html`
-- ✅ Verifica que Authentication esté habilitado en Firebase Console
+- ✓ Primero regístrate en `/login.html`
+- ✓ Verifica que Authentication esté habilitado en Firebase Console
 
 ### Error: "Missing or insufficient permissions"
-- ✅ Verifica las reglas de Firestore (Paso 5)
-- ✅ Verifica que estés autenticado
+- ✓ Verifica las reglas de Firestore (Paso 5)
+- ✓ Verifica que estés autenticado
 
 ### Error: "storage is not a function"
-- ✅ Ya está corregido en el nuevo `firebase-config.js`
-- ✅ El Storage solo se usa en páginas que lo necesitan
+- ✓ Ya está corregido en el nuevo `firebase-config.js`
+- ✓ El Storage solo se usa en páginas que lo necesitan
 
 ### No se ven las propiedades en index.html
-- ✅ Crea propiedades con `seed-properties.html`
-- ✅ O crea manualmente desde el Dashboard
+- ✓ Crea propiedades con `seed-properties.html`
+- ✓ O crea manualmente desde el Dashboard
 
 ---
 
-## 📚 Recursos
+## Recursos
 
 - [Documentación de Firebase](https://firebase.google.com/docs)
 - [Firebase Console](https://console.firebase.google.com/)
@@ -267,7 +267,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 
 ---
 
-## 🎯 Resumen Rápido
+## Resumen Rápido
 
 ```bash
 1. Firebase Console → Crear proyecto
@@ -279,7 +279,7 @@ Para que el sitio funcione, necesitas configurar Firebase con tus propias creden
 7. Recargar página
 8. Registrarte en /login.html
 9. Crear propiedades en /seed-properties.html
-10. ¡Listo! 🎉
+10. ¡Listo!
 ```
 
 ---

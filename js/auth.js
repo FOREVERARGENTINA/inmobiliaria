@@ -268,16 +268,16 @@ function showToast(type = 'info', title, message) {
     let icon = '';
     switch (type) {
         case 'success':
-            icon = '✓';
+            icon = '<i class="fa-solid fa-check"></i>';
             break;
         case 'error':
-            icon = '✕';
+            icon = '<i class="fa-solid fa-xmark"></i>';
             break;
         case 'warning':
-            icon = '⚠';
+            icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
             break;
         default:
-            icon = 'ℹ';
+            icon = '<i class="fa-solid fa-info"></i>';
     }
 
     toast.innerHTML = `

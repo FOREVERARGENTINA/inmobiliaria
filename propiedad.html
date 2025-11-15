@@ -10,11 +10,14 @@
     <meta property="og:image" content="">
     <meta property="og:url" content="">
     <title>Cargando... - InmoPlus</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/property-details.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/property-details.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for consistent professional icons (replaces emojis) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -24,12 +27,12 @@
                 <h2>InmoPlus</h2>
             </div>
             <ul class="nav__menu" id="navMenu">
-                <li class="nav__item"><a href="index.html#inicio" class="nav__link">Inicio</a></li>
-                <li class="nav__item"><a href="index.html#propiedades" class="nav__link">Propiedades</a></li>
-                <li class="nav__item"><a href="index.html#servicios" class="nav__link">Servicios</a></li>
-                <li class="nav__item"><a href="index.html#nosotros" class="nav__link">Nosotros</a></li>
-                <li class="nav__item"><a href="index.html#contacto" class="nav__link">Contacto</a></li>
-                <li class="nav__item"><a href="login.html" class="nav__link" style="color: var(--primary-color); font-weight: 600;">🔐 Admin</a></li>
+                <li class="nav__item"><a href="/#inicio" class="nav__link">Inicio</a></li>
+                <li class="nav__item"><a href="/#propiedades" class="nav__link">Propiedades</a></li>
+                <li class="nav__item"><a href="/#servicios" class="nav__link">Servicios</a></li>
+                <li class="nav__item"><a href="/#nosotros" class="nav__link">Nosotros</a></li>
+                <li class="nav__item"><a href="/#contacto" class="nav__link">Contacto</a></li>
+                <li class="nav__item"><a href="/login.html" class="nav__link" style="color: var(--primary-color); font-weight: 600;"><i class="fa-solid fa-user-lock"></i> Admin</a></li>
             </ul>
             <div class="nav__toggle" id="navToggle">
                 <span></span>
@@ -47,19 +50,19 @@
 
     <!-- Error State -->
     <div id="errorState" class="error-container" style="display: none;">
-        <div class="error-icon">⚠️</div>
+        <div class="error-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
         <h2>Propiedad no encontrada</h2>
         <p>Lo sentimos, la propiedad que buscas no existe o ya no está disponible.</p>
-        <a href="index.html#propiedades" class="btn btn--primary">Ver todas las propiedades</a>
+        <a href="/#propiedades" class="btn btn--primary">Ver todas las propiedades</a>
     </div>
 
     <!-- Property Details Container -->
     <div id="propertyDetails" class="property-details-container" style="display: none;">
         <!-- Breadcrumb -->
         <div class="breadcrumb container">
-            <a href="index.html">Inicio</a>
+            <a href="/">Inicio</a>
             <span>/</span>
-            <a href="index.html#propiedades">Propiedades</a>
+            <a href="/#propiedades">Propiedades</a>
             <span>/</span>
             <span id="breadcrumbTitle">...</span>
         </div>
@@ -69,16 +72,16 @@
             <div class="property-header-content">
                 <div class="property-status-badge" id="propertyStatusBadge">En Venta</div>
                 <h1 class="property-title" id="propertyTitle">Cargando...</h1>
-                <p class="property-location" id="propertyLocation">📍 Ubicación</p>
+                <p class="property-location" id="propertyLocation"><i class="fa-solid fa-location-dot"></i> Ubicación</p>
                 <div class="property-price" id="propertyPrice">$0</div>
             </div>
             <div class="property-actions">
                 <button class="btn btn-icon" id="shareBtn" title="Compartir">
-                    <span>🔗</span>
+                    <span><i class="fa-solid fa-link"></i></span>
                     <span>Compartir</span>
                 </button>
                 <button class="btn btn-icon btn--primary" id="contactBtn">
-                    <span>📞</span>
+                    <span><i class="fa-solid fa-phone"></i></span>
                     <span>Contactar</span>
                 </button>
             </div>
@@ -129,11 +132,11 @@
                         <h3>¿Interesado en esta propiedad?</h3>
                         <p>Contáctanos para más información</p>
                         <button class="btn btn--primary btn-full" id="whatsappBtn">
-                            <span>💬</span>
+                            <span><i class="fa-brands fa-whatsapp"></i></span>
                             <span>WhatsApp</span>
                         </button>
                         <button class="btn btn-secondary btn-full" id="emailBtn">
-                            <span>✉️</span>
+                            <span><i class="fa-solid fa-envelope"></i></span>
                             <span>Email</span>
                         </button>
                     </div>
@@ -141,9 +144,9 @@
                     <div class="info-card">
                         <h3>Información de contacto</h3>
                         <div class="contact-info">
-                            <p><strong>📞 Teléfono:</strong><br>+54 11 1234-5678</p>
-                            <p><strong>✉️ Email:</strong><br>info@inmoplus.com</p>
-                            <p><strong>📍 Oficina:</strong><br>Av. Principal 123, CABA</p>
+                            <p><strong><i class="fa-solid fa-phone"></i> Teléfono:</strong><br>+54 11 1234-5678</p>
+                            <p><strong><i class="fa-solid fa-envelope"></i> Email:</strong><br>info@inmoplus.com</p>
+                            <p><strong><i class="fa-solid fa-location-dot"></i> Oficina:</strong><br>Av. Principal 123, CABA</p>
                         </div>
                     </div>
                 </div>
@@ -170,18 +173,18 @@
                 <div class="footer__section">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="index.html#propiedades">Propiedades</a></li>
-                        <li><a href="index.html#servicios">Servicios</a></li>
-                        <li><a href="index.html#nosotros">Nosotros</a></li>
-                        <li><a href="index.html#contacto">Contacto</a></li>
+                        <li><a href="/#propiedades">Propiedades</a></li>
+                        <li><a href="/#servicios">Servicios</a></li>
+                        <li><a href="/#nosotros">Nosotros</a></li>
+                        <li><a href="/#contacto">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer__section">
                     <h4>Contacto</h4>
                     <ul>
-                        <li>📞 +54 11 1234-5678</li>
-                        <li>✉️ info@inmoplus.com</li>
-                        <li>📍 Av. Principal 123, CABA</li>
+                        <li><i class="fa-solid fa-phone"></i> +54 11 1234-5678</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@inmoplus.com</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Av. Principal 123, CABA</li>
                     </ul>
                 </div>
             </div>
@@ -199,13 +202,13 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
     <!-- Firebase Config -->
-    <script src="js/firebase-config.js"></script>
+    <script src="/js/firebase-config.js"></script>
 
     <!-- Slug Utilities -->
-    <script src="js/slug-utils.js"></script>
+    <script src="/js/slug-utils.js"></script>
 
     <!-- Property Details Logic -->
-    <script src="js/property-details.js"></script>
+    <script src="/js/property-details.js"></script>
 
     <!-- Navigation Toggle -->
     <script>

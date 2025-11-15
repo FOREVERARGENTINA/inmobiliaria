@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "frandoweb-4c2c7"
+  },
+  "targets": {
+    "frandoweb-4c2c7": {
+      "hosting": {
+        "inmobiliaria2": [
+          "inmobiliaria2"
+        ]
+      }
+    }
+  }
+}

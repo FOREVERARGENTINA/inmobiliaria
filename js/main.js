@@ -61,12 +61,121 @@ if (searchForm) {
         const location = document.getElementById('location').value;
         const priceRange = document.getElementById('priceRange').value;
 
+        // Scroll to properties section
+        const propertiesSection = document.getElementById('propiedades');
+        if (propertiesSection) {
+            const headerOffset = 80;
+            const elementPosition = propertiesSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Filter properties based on search criteria
+        filterPropertiesBySearch(currentSearchType, propertyType, location, priceRange);
+
         // Show search results notification
         showNotification(`Buscando ${currentSearchType} de ${propertyType || 'propiedades'} en ${location || 'todas las ubicaciones'}...`);
 
-        // Here you would typically filter properties or redirect to search results
         console.log('Search params:', { type: currentSearchType, propertyType, location, priceRange });
     });
+}
+
+// Function to filter properties based on search criteria
+function filterPropertiesBySearch(transactionType, propertyType, location, priceRange) {
+    const propertyCards = document.querySelectorAll('.property-card');
+    let visibleCount = 0;
+
+    propertyCards.forEach((card, index) => {
+        let shouldShow = true;
+
+        // Filter by transaction type (venta/alquiler)
+        const cardCategory = card.dataset.category;
+        if (transactionType && cardCategory !== transactionType) {
+            shouldShow = false;
+        }
+
+        // Filter by property type
+        if (shouldShow && propertyType) {
+            const cardTitle = card.querySelector('.property-card__title').textContent.toLowerCase();
+            const typeKeywords = {
+                'casa': ['casa', 'villa', 'chalet'],
+                'apartamento': ['apartamento', 'piso', 'penthouse'],
+                'local': ['local', 'comercial'],
+                'terreno': ['terreno', 'lote', 'parcela']
+            };
+
+            const keywords = typeKeywords[propertyType] || [propertyType];
+            const matchesType = keywords.some(keyword => cardTitle.includes(keyword));
+
+            if (!matchesType) {
+                shouldShow = false;
+            }
+        }
+
+        // Filter by location
+        if (shouldShow && location) {
+            const cardLocation = card.querySelector('.property-card__location').textContent.toLowerCase();
+            if (!cardLocation.includes(location.toLowerCase())) {
+                shouldShow = false;
+            }
+        }
+
+        // Filter by price range
+        if (shouldShow && priceRange) {
+            const priceText = card.querySelector('.property-card__price').textContent;
+            const price = parsePrice(priceText);
+
+            if (priceRange === '0-100000' && price > 100000) {
+                shouldShow = false;
+            } else if (priceRange === '100000-200000' && (price < 100000 || price > 200000)) {
+                shouldShow = false;
+            } else if (priceRange === '200000-300000' && (price < 200000 || price > 300000)) {
+                shouldShow = false;
+            } else if (priceRange === '300000+' && price < 300000) {
+                shouldShow = false;
+            }
+        }
+
+        // Show or hide the card
+        if (shouldShow) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.animation = `fadeInUp 0.5s ease ${visibleCount * 0.1}s backwards`;
+            }, 10);
+            visibleCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Update filter buttons to show current filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        if (btn.dataset.filter === transactionType) {
+            btn.classList.add('active');
+        } else if (transactionType && btn.dataset.filter === 'all') {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Show message if no results
+    if (visibleCount === 0) {
+        showNotification('No se encontraron propiedades con los criterios seleccionados', 'error');
+    }
+}
+
+// Helper function to parse price from text
+function parsePrice(priceText) {
+    // Remove currency symbols, commas, and extract number
+    const match = priceText.match(/[\d,]+/);
+    if (match) {
+        return parseInt(match[0].replace(/,/g, ''));
+    }
+    return 0;
 }
 
 // ========================================

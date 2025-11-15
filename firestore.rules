@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Reglas para la colección de propiedades
+    match /properties/{propertyId} {
+      // Permitir lectura pública de todas las propiedades
+      allow read: if true;
+
+      // Solo usuarios autenticados pueden crear, actualizar o eliminar
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Reglas para otros documentos (bloquear por defecto)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

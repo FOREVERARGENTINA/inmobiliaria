@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dashboard - InmoPlus">
     <title>Dashboard - InmoPlus</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for consistent professional icons (replaces emojis) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="dashboard-page">
     <!-- Sidebar -->
@@ -23,33 +26,33 @@
 
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active" data-section="properties">
-                <span class="nav-icon">🏠</span>
+                <span class="nav-icon"><i class="fa-solid fa-home"></i></span>
                 <span class="nav-text">Propiedades</span>
             </a>
             <a href="#" class="nav-item" data-section="add-property">
-                <span class="nav-icon">➕</span>
+                <span class="nav-icon"><i class="fa-solid fa-plus"></i></span>
                 <span class="nav-text">Nueva Propiedad</span>
             </a>
             <a href="#" class="nav-item" data-section="stats">
-                <span class="nav-icon">📊</span>
+                <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
                 <span class="nav-text">Estadísticas</span>
             </a>
             <a href="index.html" class="nav-item" target="_blank">
-                <span class="nav-icon">🌐</span>
+                <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
                 <span class="nav-text">Ver Sitio</span>
             </a>
         </nav>
 
         <div class="sidebar-footer">
             <div class="user-info" id="userInfo">
-                <div class="user-avatar">👤</div>
+                <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
                 <div class="user-details">
                     <p class="user-name">Usuario</p>
                     <p class="user-email">user@email.com</p>
                 </div>
             </div>
             <button class="btn-logout" id="logoutBtn">
-                <span>🚪</span> Cerrar Sesión
+                <span><i class="fa-solid fa-right-from-bracket"></i></span> Cerrar Sesión
             </button>
         </div>
     </aside>
@@ -65,8 +68,8 @@
             </button>
             <h1 class="page-title" id="pageTitle">Propiedades</h1>
             <div class="top-bar-actions">
-                <button class="btn btn-refresh" id="refreshBtn" title="Actualizar">
-                    <span>🔄</span>
+                    <button class="btn btn-refresh" id="refreshBtn" title="Actualizar">
+                    <span><i class="fa-solid fa-arrows-rotate"></i></span>
                 </button>
             </div>
         </header>
@@ -78,7 +81,7 @@
                 <div class="section-header">
                     <h2>Mis Propiedades</h2>
                     <button class="btn btn-primary" id="addPropertyBtn">
-                        ➕ Nueva Propiedad
+                        <i class="fa-solid fa-plus"></i> Nueva Propiedad
                     </button>
                 </div>
 
@@ -88,7 +91,7 @@
                         type="text"
                         class="search-input"
                         id="searchProperties"
-                        placeholder="🔍 Buscar propiedades..."
+                        placeholder="Buscar propiedades..."
                     >
                     <select class="filter-select" id="filterType">
                         <option value="">Todos los tipos</option>
@@ -251,7 +254,7 @@
                                     style="display: none;"
                                 >
                                 <label for="propertyImages" class="upload-label">
-                                    <span class="upload-icon">📷</span>
+                                    <span class="upload-icon"><i class="fa-solid fa-camera"></i></span>
                                     <span class="upload-text">Click para subir imágenes</span>
                                     <span class="upload-hint">o arrastra y suelta aquí</span>
                                 </label>
@@ -290,7 +293,7 @@
 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon">🏠</div>
+                        <div class="stat-icon"><i class="fa-solid fa-house"></i></div>
                         <div class="stat-info">
                             <p class="stat-label">Total Propiedades</p>
                             <h3 class="stat-value" id="totalProperties">0</h3>
@@ -298,7 +301,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon">💰</div>
+                        <div class="stat-icon"><i class="fa-solid fa-dollar-sign"></i></div>
                         <div class="stat-info">
                             <p class="stat-label">En Venta</p>
                             <h3 class="stat-value" id="totalSales">0</h3>
@@ -306,7 +309,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon">🔑</div>
+                        <div class="stat-icon"><i class="fa-solid fa-key"></i></div>
                         <div class="stat-info">
                             <p class="stat-label">En Alquiler</p>
                             <h3 class="stat-value" id="totalRentals">0</h3>
@@ -314,7 +317,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon">📈</div>
+                        <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
                         <div class="stat-info">
                             <p class="stat-label">Valor Total</p>
                             <h3 class="stat-value" id="totalValue">$0</h3>

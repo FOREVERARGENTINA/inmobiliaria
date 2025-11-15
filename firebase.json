@@ -1,5 +1,12 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
   "hosting": {
+    "site": "inmobiliaria2",
     "public": ".",
     "ignore": [
       "firebase.json",
@@ -12,6 +19,7 @@
         "destination": "/propiedad.html"
       }
     ],
+    "cleanUrls": true,
     "headers": [
       {
         "source": "**/*.@(jpg|jpeg|gif|png|svg|webp)",

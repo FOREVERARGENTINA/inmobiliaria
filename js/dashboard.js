@@ -430,8 +430,10 @@ propertyForm?.addEventListener('submit', async (e) => {
         submitBtn.disabled = true;
 
         // Get form data
+        const title = document.getElementById('propertyTitle').value;
+
         const propertyData = {
-            title: document.getElementById('propertyTitle').value,
+            title: title,
             type: document.getElementById('propertyType').value,
             status: document.getElementById('propertyStatus').value,
             description: document.getElementById('propertyDescription').value,
@@ -443,6 +445,10 @@ propertyForm?.addEventListener('submit', async (e) => {
             userId: currentUser.uid,
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
+
+        // Generate unique slug from title
+        const slug = await generateUniqueSlug(title, editingPropertyId);
+        propertyData.slug = slug;
 
         if (editingPropertyId) {
             // Update existing property

@@ -98,6 +98,9 @@ function displayPropertiesOnSite(properties) {
             ? `$${formatNumber(property.price)}/mes`
             : `$${formatNumber(property.price)}`;
 
+        // Generate URL with slug or fallback to ID
+        const propertyUrl = `/propiedad/${property.slug || property.id}`;
+
         return `
             <article class="property-card" data-category="${property.status}">
                 <div class="property-card__badge ${badgeClass}">${badgeText}</div>
@@ -114,7 +117,7 @@ function displayPropertiesOnSite(properties) {
                     </div>
                     <div class="property-card__footer">
                         <p class="property-card__price">${priceText}</p>
-                        <button class="btn btn--secondary" onclick="viewPropertyDetails('${property.id}')">Ver Detalles</button>
+                        <a href="${propertyUrl}" class="btn btn--secondary">Ver Detalles</a>
                     </div>
                 </div>
             </article>
@@ -151,7 +154,7 @@ function attachFilterListeners(allProperties) {
 }
 
 // ========================================
-// View Property Details (Modal or Page)
+// View Property Details - Redirect to details page
 // ========================================
 window.viewPropertyDetails = async function(propertyId) {
     try {
@@ -164,21 +167,9 @@ window.viewPropertyDetails = async function(propertyId) {
 
         const property = doc.data();
 
-        // You can implement a modal here or redirect to a details page
-        // For now, show an alert with basic info
-        alert(`
-Propiedad: ${property.title}
-
-Ubicación: ${property.location}
-Precio: $${formatNumber(property.price)}
-${property.bedrooms ? `Habitaciones: ${property.bedrooms}` : ''}
-${property.bathrooms ? `Baños: ${property.bathrooms}` : ''}
-${property.area ? `Área: ${property.area} m²` : ''}
-
-${property.description || ''}
-        `.trim());
-
-        // TODO: Implement proper modal or details page
+        // Redirect to property details page using slug
+        const slug = property.slug || propertyId;
+        window.location.href = `/propiedad/${slug}`;
 
     } catch (error) {
         console.error('Error loading property details:', error);

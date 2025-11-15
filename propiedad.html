@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalles de la propiedad - InmoPlus">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <title>Cargando... - InmoPlus</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/property-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2>InmoPlus</h2>
+            </div>
+            <ul class="nav__menu" id="navMenu">
+                <li class="nav__item"><a href="index.html#inicio" class="nav__link">Inicio</a></li>
+                <li class="nav__item"><a href="index.html#propiedades" class="nav__link">Propiedades</a></li>
+                <li class="nav__item"><a href="index.html#servicios" class="nav__link">Servicios</a></li>
+                <li class="nav__item"><a href="index.html#nosotros" class="nav__link">Nosotros</a></li>
+                <li class="nav__item"><a href="index.html#contacto" class="nav__link">Contacto</a></li>
+                <li class="nav__item"><a href="login.html" class="nav__link" style="color: var(--primary-color); font-weight: 600;">🔐 Admin</a></li>
+            </ul>
+            <div class="nav__toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loadingState" class="loading-container">
+        <div class="loading-spinner"></div>
+        <p>Cargando propiedad...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" class="error-container" style="display: none;">
+        <div class="error-icon">⚠️</div>
+        <h2>Propiedad no encontrada</h2>
+        <p>Lo sentimos, la propiedad que buscas no existe o ya no está disponible.</p>
+        <a href="index.html#propiedades" class="btn btn--primary">Ver todas las propiedades</a>
+    </div>
+
+    <!-- Property Details Container -->
+    <div id="propertyDetails" class="property-details-container" style="display: none;">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb container">
+            <a href="index.html">Inicio</a>
+            <span>/</span>
+            <a href="index.html#propiedades">Propiedades</a>
+            <span>/</span>
+            <span id="breadcrumbTitle">...</span>
+        </div>
+
+        <!-- Property Header -->
+        <section class="property-header container">
+            <div class="property-header-content">
+                <div class="property-status-badge" id="propertyStatusBadge">En Venta</div>
+                <h1 class="property-title" id="propertyTitle">Cargando...</h1>
+                <p class="property-location" id="propertyLocation">📍 Ubicación</p>
+                <div class="property-price" id="propertyPrice">$0</div>
+            </div>
+            <div class="property-actions">
+                <button class="btn btn-icon" id="shareBtn" title="Compartir">
+                    <span>🔗</span>
+                    <span>Compartir</span>
+                </button>
+                <button class="btn btn-icon btn--primary" id="contactBtn">
+                    <span>📞</span>
+                    <span>Contactar</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Image Gallery -->
+        <section class="property-gallery container">
+            <div class="gallery-main">
+                <img id="galleryMainImage" src="" alt="Imagen principal" class="gallery-main-image">
+                <div class="gallery-nav">
+                    <button class="gallery-nav-btn prev" id="galleryPrev">❮</button>
+                    <button class="gallery-nav-btn next" id="galleryNext">❯</button>
+                </div>
+            </div>
+            <div class="gallery-thumbnails" id="galleryThumbnails">
+                <!-- Thumbnails will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Property Information -->
+        <section class="property-info container">
+            <div class="property-info-grid">
+                <!-- Main Info -->
+                <div class="info-main">
+                    <div class="info-card">
+                        <h2>Descripción</h2>
+                        <p id="propertyDescription" class="property-description">Cargando descripción...</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2>Características</h2>
+                        <div class="features-grid" id="propertyFeatures">
+                            <!-- Features will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h2>Detalles</h2>
+                        <div class="details-list" id="propertyDetailsList">
+                            <!-- Details will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="info-sidebar">
+                    <div class="info-card contact-card">
+                        <h3>¿Interesado en esta propiedad?</h3>
+                        <p>Contáctanos para más información</p>
+                        <button class="btn btn--primary btn-full" id="whatsappBtn">
+                            <span>💬</span>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button class="btn btn-secondary btn-full" id="emailBtn">
+                            <span>✉️</span>
+                            <span>Email</span>
+                        </button>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Información de contacto</h3>
+                        <div class="contact-info">
+                            <p><strong>📞 Teléfono:</strong><br>+54 11 1234-5678</p>
+                            <p><strong>✉️ Email:</strong><br>info@inmoplus.com</p>
+                            <p><strong>📍 Oficina:</strong><br>Av. Principal 123, CABA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Properties -->
+        <section class="related-properties container">
+            <h2 class="section__title">Propiedades Similares</h2>
+            <div class="properties__grid" id="relatedPropertiesGrid">
+                <!-- Related properties will be loaded dynamically -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>InmoPlus</h3>
+                    <p>Tu socio de confianza en bienes raíces. Ayudándote a encontrar el hogar perfecto desde 2024.</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#propiedades">Propiedades</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>📞 +54 11 1234-5678</li>
+                        <li>✉️ info@inmoplus.com</li>
+                        <li>📍 Av. Principal 123, CABA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 InmoPlus. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Slug Utilities -->
+    <script src="js/slug-utils.js"></script>
+
+    <!-- Property Details Logic -->
+    <script src="js/property-details.js"></script>
+
+    <!-- Navigation Toggle -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle?.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login - InmoPlus Dashboard">
+    <title>Login - InmoPlus</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1 class="auth-logo">InmoPlus</h1>
+                <p class="auth-subtitle">Panel de Administración</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="auth-form" id="loginForm">
+                <h2 class="auth-title">Iniciar Sesión</h2>
+
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        class="form-control"
+                        placeholder="tu@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        class="form-control"
+                        placeholder="••••••••"
+                        required
+                    >
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Recordarme</span>
+                    </label>
+                    <a href="#" class="link-text" id="forgotPassword">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Iniciar Sesión</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span> Iniciando...
+                    </span>
+                </button>
+
+                <p class="auth-switch">
+                    ¿No tienes cuenta?
+                    <a href="#" id="showRegister" class="link-primary">Regístrate aquí</a>
+                </p>
+            </form>
+
+            <!-- Register Form (hidden by default) -->
+            <form class="auth-form" id="registerForm" style="display: none;">
+                <h2 class="auth-title">Crear Cuenta</h2>
+
+                <div class="form-group">
+                    <label for="registerName">Nombre Completo</label>
+                    <input
+                        type="text"
+                        id="registerName"
+                        class="form-control"
+                        placeholder="Juan Pérez"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        class="form-control"
+                        placeholder="tu@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        class="form-control"
+                        placeholder="Mínimo 6 caracteres"
+                        required
+                        minlength="6"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPasswordConfirm">Confirmar Contraseña</label>
+                    <input
+                        type="password"
+                        id="registerPasswordConfirm"
+                        class="form-control"
+                        placeholder="Repite tu contraseña"
+                        required
+                        minlength="6"
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Crear Cuenta</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span> Creando...
+                    </span>
+                </button>
+
+                <p class="auth-switch">
+                    ¿Ya tienes cuenta?
+                    <a href="#" id="showLogin" class="link-primary">Inicia sesión aquí</a>
+                </p>
+            </form>
+
+            <!-- Reset Password Form (hidden by default) -->
+            <form class="auth-form" id="resetForm" style="display: none;">
+                <h2 class="auth-title">Recuperar Contraseña</h2>
+                <p class="auth-description">Te enviaremos un enlace para restablecer tu contraseña</p>
+
+                <div class="form-group">
+                    <label for="resetEmail">Email</label>
+                    <input
+                        type="email"
+                        id="resetEmail"
+                        class="form-control"
+                        placeholder="tu@email.com"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Enviar Enlace</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span> Enviando...
+                    </span>
+                </button>
+
+                <p class="auth-switch">
+                    <a href="#" id="backToLogin" class="link-primary">← Volver al login</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Decorative Background -->
+        <div class="auth-background">
+            <div class="auth-bg-shape shape-1"></div>
+            <div class="auth-bg-shape shape-2"></div>
+            <div class="auth-bg-shape shape-3"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Auth Logic -->
+    <script src="js/auth.js"></script>
+</body>
+</html>

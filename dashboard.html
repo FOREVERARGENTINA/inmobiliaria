@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard - InmoPlus">
+    <title>Dashboard - InmoPlus</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-logo">InmoPlus</h2>
+            <button class="sidebar-toggle" id="sidebarClose">
+                <span>×</span>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="properties">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Propiedades</span>
+            </a>
+            <a href="#" class="nav-item" data-section="add-property">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Nueva Propiedad</span>
+            </a>
+            <a href="#" class="nav-item" data-section="stats">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Estadísticas</span>
+            </a>
+            <a href="index.html" class="nav-item" target="_blank">
+                <span class="nav-icon">🌐</span>
+                <span class="nav-text">Ver Sitio</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info" id="userInfo">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <p class="user-name">Usuario</p>
+                    <p class="user-email">user@email.com</p>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <span>🚪</span> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="sidebar-toggle-btn" id="sidebarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="page-title" id="pageTitle">Propiedades</h1>
+            <div class="top-bar-actions">
+                <button class="btn btn-refresh" id="refreshBtn" title="Actualizar">
+                    <span>🔄</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Sections -->
+        <div class="dashboard-content">
+            <!-- Properties List Section -->
+            <section class="content-section active" id="properties-section">
+                <div class="section-header">
+                    <h2>Mis Propiedades</h2>
+                    <button class="btn btn-primary" id="addPropertyBtn">
+                        ➕ Nueva Propiedad
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="filters-bar">
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchProperties"
+                        placeholder="🔍 Buscar propiedades..."
+                    >
+                    <select class="filter-select" id="filterType">
+                        <option value="">Todos los tipos</option>
+                        <option value="casa">Casa</option>
+                        <option value="apartamento">Apartamento</option>
+                        <option value="local">Local Comercial</option>
+                        <option value="terreno">Terreno</option>
+                    </select>
+                    <select class="filter-select" id="filterStatus">
+                        <option value="">Todos los estados</option>
+                        <option value="venta">En Venta</option>
+                        <option value="alquiler">En Alquiler</option>
+                    </select>
+                </div>
+
+                <!-- Properties Grid -->
+                <div class="properties-list" id="propertiesList">
+                    <div class="loading-state">
+                        <div class="spinner-large"></div>
+                        <p>Cargando propiedades...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add/Edit Property Section -->
+            <section class="content-section" id="add-property-section">
+                <div class="section-header">
+                    <h2 id="formTitle">Nueva Propiedad</h2>
+                    <button class="btn btn-secondary" id="cancelFormBtn">
+                        ← Volver
+                    </button>
+                </div>
+
+                <form class="property-form" id="propertyForm">
+                    <input type="hidden" id="propertyId">
+
+                    <div class="form-grid">
+                        <!-- Información Básica -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Información Básica</h3>
+
+                            <div class="form-group">
+                                <label for="propertyTitle">Título *</label>
+                                <input
+                                    type="text"
+                                    id="propertyTitle"
+                                    class="form-control"
+                                    placeholder="Ej: Casa Moderna en Zona Premium"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="propertyType">Tipo de Propiedad *</label>
+                                    <select id="propertyType" class="form-control" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="casa">Casa</option>
+                                        <option value="apartamento">Apartamento</option>
+                                        <option value="local">Local Comercial</option>
+                                        <option value="terreno">Terreno</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="propertyStatus">Estado *</label>
+                                    <select id="propertyStatus" class="form-control" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="venta">En Venta</option>
+                                        <option value="alquiler">En Alquiler</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="propertyDescription">Descripción</label>
+                                <textarea
+                                    id="propertyDescription"
+                                    class="form-control"
+                                    rows="4"
+                                    placeholder="Describe la propiedad..."
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Ubicación y Precio -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Ubicación y Precio</h3>
+
+                            <div class="form-group">
+                                <label for="propertyLocation">Ubicación *</label>
+                                <input
+                                    type="text"
+                                    id="propertyLocation"
+                                    class="form-control"
+                                    placeholder="Ej: Centro, Ciudad"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="propertyPrice">Precio ($) *</label>
+                                <input
+                                    type="number"
+                                    id="propertyPrice"
+                                    class="form-control"
+                                    placeholder="285000"
+                                    required
+                                    min="0"
+                                    step="1000"
+                                >
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="propertyBedrooms">Habitaciones</label>
+                                    <input
+                                        type="number"
+                                        id="propertyBedrooms"
+                                        class="form-control"
+                                        placeholder="4"
+                                        min="0"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="propertyBathrooms">Baños</label>
+                                    <input
+                                        type="number"
+                                        id="propertyBathrooms"
+                                        class="form-control"
+                                        placeholder="3"
+                                        min="0"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="propertyArea">Área (m²)</label>
+                                    <input
+                                        type="number"
+                                        id="propertyArea"
+                                        class="form-control"
+                                        placeholder="250"
+                                        min="0"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Imágenes -->
+                        <div class="form-section full-width">
+                            <h3 class="form-section-title">Imágenes</h3>
+
+                            <div class="image-upload-area">
+                                <input
+                                    type="file"
+                                    id="propertyImages"
+                                    accept="image/*"
+                                    multiple
+                                    style="display: none;"
+                                >
+                                <label for="propertyImages" class="upload-label">
+                                    <span class="upload-icon">📷</span>
+                                    <span class="upload-text">Click para subir imágenes</span>
+                                    <span class="upload-hint">o arrastra y suelta aquí</span>
+                                </label>
+                            </div>
+
+                            <div class="image-preview-grid" id="imagePreview"></div>
+
+                            <div class="upload-progress" id="uploadProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <p class="progress-text" id="progressText">Subiendo imágenes...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelFormBtn2">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Guardar Propiedad</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="spinner"></span> Guardando...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="content-section" id="stats-section">
+                <div class="section-header">
+                    <h2>Estadísticas</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏠</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Total Propiedades</p>
+                            <h3 class="stat-value" id="totalProperties">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <p class="stat-label">En Venta</p>
+                            <h3 class="stat-value" id="totalSales">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🔑</div>
+                        <div class="stat-info">
+                            <p class="stat-label">En Alquiler</p>
+                            <h3 class="stat-value" id="totalRentals">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Valor Total</p>
+                            <h3 class="stat-value" id="totalValue">$0</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3 class="modal-title">¿Eliminar Propiedad?</h3>
+            <p class="modal-text">Esta acción no se puede deshacer. ¿Estás seguro?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelDelete">Cancelar</button>
+                <button class="btn btn-danger" id="confirmDelete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Dashboard Logic -->
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

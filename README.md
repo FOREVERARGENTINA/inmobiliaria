@@ -1,6 +1,54 @@
 # InmoPlus - Sitio Web de Inmobiliaria
 
-Sitio web moderno, optimizado y responsive para una inmobiliaria, desarrollado con HTML5, CSS3 y JavaScript vanilla.
+Sitio web moderno, optimizado y responsive para una inmobiliaria, desarrollado con HTML5, CSS3, JavaScript vanilla y **Firebase**.
+
+## 🚀 Nuevo: Sistema de Gestión Completo con Firebase
+
+### Características Principales
+- ✅ **Dashboard de Administración** - Panel completo para gestionar propiedades
+- ✅ **Sistema de Autenticación** - Login y registro con Firebase Auth
+- ✅ **CRUD de Propiedades** - Crear, editar y eliminar propiedades en tiempo real
+- ✅ **Subida de Imágenes** - Múltiples imágenes por propiedad con Firebase Storage
+- ✅ **Base de Datos en Tiempo Real** - Firestore para almacenar propiedades
+- ✅ **Filtros y Búsqueda** - Sistema avanzado de filtrado
+- ✅ **Estadísticas** - Dashboard con métricas de tus propiedades
+- ✅ **Responsive** - Dashboard funciona perfectamente en móviles
+
+### Cómo Empezar
+
+#### 1. Configurar Firebase (Requerido)
+
+Sigue la guía completa en **[FIREBASE_SETUP.md](FIREBASE_SETUP.md)** para:
+1. Crear cuenta en Firebase
+2. Configurar Authentication, Firestore y Storage
+3. Obtener credenciales y configurar el proyecto
+
+#### 2. Abrir el Sitio
+
+```bash
+# Opción 1: Servidor Python
+python -m http.server 8000
+
+# Opción 2: Node.js
+npx serve
+
+# Opción 3: PHP
+php -S localhost:8000
+```
+
+Luego abre `http://localhost:8000` en tu navegador.
+
+#### 3. Acceder al Dashboard
+
+1. Click en **"🔐 Admin"** en el menú de navegación
+2. Regístrate con tu email y contraseña
+3. ¡Comienza a agregar propiedades!
+
+### Páginas del Sistema
+
+- **`index.html`** - Sitio público con propiedades (carga desde Firebase)
+- **`login.html`** - Página de login y registro
+- **`dashboard.html`** - Panel de administración (requiere autenticación)
 
 ## Características
 
@@ -68,21 +116,34 @@ Sitio web moderno, optimizado y responsive para una inmobiliaria, desarrollado c
 
 ```
 inmobiliaria/
-├── index.html          # Página principal
+├── index.html              # Página principal (sitio público)
+├── login.html              # Página de login/registro
+├── dashboard.html          # Dashboard de administración
+├── FIREBASE_SETUP.md       # Guía de configuración de Firebase
+├── README.md               # Este archivo
+├── .gitignore              # Archivos ignorados por Git
 ├── css/
-│   └── styles.css     # Estilos principales
+│   ├── styles.css          # Estilos principales del sitio
+│   ├── auth.css            # Estilos de autenticación
+│   └── dashboard.css       # Estilos del dashboard
 ├── js/
-│   └── main.js        # JavaScript interactivo
-├── images/            # Imágenes (actualmente usando Unsplash CDN)
-├── .gitignore         # Archivos ignorados por Git
-└── README.md          # Este archivo
+│   ├── main.js             # JavaScript del sitio público
+│   ├── firebase-config.js  # Configuración de Firebase
+│   ├── auth.js             # Lógica de autenticación
+│   ├── dashboard.js        # Lógica del dashboard (CRUD)
+│   └── properties-loader.js # Carga propiedades desde Firebase
+└── images/                 # Imágenes locales (opcional)
 ```
 
 ## Tecnologías Utilizadas
 
 - **HTML5** - Estructura semántica
 - **CSS3** - Estilos modernos con Flexbox y Grid
-- **JavaScript ES6+** - Funcionalidad interactiva
+- **JavaScript ES6+** - Funcionalidad interactiva (vanilla JS, sin frameworks)
+- **Firebase** - Backend completo
+  - **Firebase Authentication** - Sistema de usuarios
+  - **Cloud Firestore** - Base de datos NoSQL
+  - **Firebase Storage** - Almacenamiento de imágenes
 - **Google Fonts** - Tipografía Poppins
 - **Unsplash** - Imágenes placeholder de alta calidad
 

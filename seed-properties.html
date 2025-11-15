@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Propiedades de Ejemplo - InmoPlus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2563eb;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        p {
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+
+        .warning strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .warning p {
+            color: #92400e;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .status {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            min-height: 100px;
+        }
+
+        .status-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-item.success {
+            color: #059669;
+        }
+
+        .status-item.error {
+            color: #dc2626;
+        }
+
+        .status-item.info {
+            color: #2563eb;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        button:hover:not(:disabled) {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .login-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .login-section h3 {
+            color: #374151;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Crear Propiedades de Ejemplo</h1>
+        <p>Este script creará propiedades de ejemplo en Firebase para que puedas probar el sistema de URLs dinámicas.</p>
+
+        <div class="warning">
+            <strong>⚠️ Importante:</strong>
+            <p>Debes iniciar sesión con tu cuenta de administrador antes de crear las propiedades.</p>
+        </div>
+
+        <div class="login-section">
+            <h3>Iniciar Sesión</h3>
+            <input type="email" id="email" placeholder="Email de administrador" value="">
+            <input type="password" id="password" placeholder="Contraseña" value="">
+            <button id="loginBtn" onclick="login()">🔐 Iniciar Sesión</button>
+        </div>
+
+        <div id="status" class="status" style="display: none;">
+            <div id="statusContent"></div>
+        </div>
+
+        <button id="createBtn" onclick="createProperties()" disabled>
+            Crear Propiedades de Ejemplo
+        </button>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Slug Utils -->
+    <script src="js/slug-utils.js"></script>
+
+    <script>
+        let currentUser = null;
+        const statusDiv = document.getElementById('status');
+        const statusContent = document.getElementById('statusContent');
+        const createBtn = document.getElementById('createBtn');
+        const loginBtn = document.getElementById('loginBtn');
+
+        // Listen for auth state changes
+        firebaseAuth.onAuthStateChanged((user) => {
+            if (user) {
+                currentUser = user;
+                createBtn.disabled = false;
+                loginBtn.disabled = true;
+                addStatus('success', `✓ Sesión iniciada como: ${user.email}`);
+                statusDiv.style.display = 'block';
+            } else {
+                currentUser = null;
+                createBtn.disabled = true;
+                loginBtn.disabled = false;
+            }
+        });
+
+        async function login() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                alert('Por favor ingresa email y contraseña');
+                return;
+            }
+
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="spinner"></span>Iniciando sesión...';
+
+            try {
+                await firebaseAuth.signInWithEmailAndPassword(email, password);
+                loginBtn.innerHTML = '✓ Sesión iniciada';
+            } catch (error) {
+                console.error('Error login:', error);
+                alert('Error al iniciar sesión: ' + error.message);
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = '🔐 Iniciar Sesión';
+            }
+        }
+
+        async function createProperties() {
+            if (!currentUser) {
+                alert('Debes iniciar sesión primero');
+                return;
+            }
+
+            createBtn.disabled = true;
+            createBtn.innerHTML = '<span class="spinner"></span>Creando propiedades...';
+
+            statusContent.innerHTML = '';
+            statusDiv.style.display = 'block';
+
+            addStatus('info', '🚀 Iniciando creación de propiedades...');
+
+            const properties = [
+                {
+                    title: 'Casa Moderna en Zona Premium',
+                    type: 'casa',
+                    status: 'venta',
+                    description: 'Hermosa casa moderna ubicada en una de las zonas más exclusivas de la ciudad. Cuenta con amplios espacios, acabados de lujo y un diseño arquitectónico contemporáneo. Incluye jardín amplio, garage para 2 autos y sistema de seguridad 24/7.',
+                    location: 'Zona Norte Premium, CABA',
+                    price: 450000,
+                    bedrooms: 4,
+                    bathrooms: 3,
+                    area: 280,
+                    images: [
+                        'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Departamento Luminoso en Palermo',
+                    type: 'apartamento',
+                    status: 'alquiler',
+                    description: 'Espectacular departamento de 2 ambientes en el corazón de Palermo. Totalmente amoblado, con excelente iluminación natural, balcón con parrilla y vista abierta. A pasos de plazas, restaurantes y transporte público.',
+                    location: 'Palermo Soho, CABA',
+                    price: 1800,
+                    bedrooms: 2,
+                    bathrooms: 1,
+                    area: 65,
+                    images: [
+                        'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Local Comercial Avenida Principal',
+                    type: 'local',
+                    status: 'venta',
+                    description: 'Excelente local comercial sobre avenida de alto tránsito. Ideal para comercio, oficinas o emprendimientos. Gran frente vidriado, baño y depósito. Listo para escriturar.',
+                    location: 'Av. Corrientes, CABA',
+                    price: 280000,
+                    bedrooms: 0,
+                    bathrooms: 1,
+                    area: 120,
+                    images: [
+                        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Penthouse con Vista al Río',
+                    type: 'apartamento',
+                    status: 'venta',
+                    description: 'Increíble penthouse de 3 ambientes con terraza privada y vista panorámica al río. Amenities completos: piscina, gimnasio, sum, seguridad 24hs. Cochera cubierta incluida. Estado impecable.',
+                    location: 'Puerto Madero, CABA',
+                    price: 620000,
+                    bedrooms: 3,
+                    bathrooms: 2,
+                    area: 180,
+                    images: [
+                        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Casa Quinta con Pileta en Country',
+                    type: 'casa',
+                    status: 'alquiler',
+                    description: 'Hermosa casa quinta en country cerrado. 5 ambientes, pileta climatizada, quincho con parrilla, amplio parque. Ideal para familias. Incluye membresía del country con canchas de tenis, golf y club house.',
+                    location: 'Pilar, Zona Norte',
+                    price: 3500,
+                    bedrooms: 5,
+                    bathrooms: 4,
+                    area: 350,
+                    images: [
+                        'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Loft Industrial en Villa Crespo',
+                    type: 'apartamento',
+                    status: 'venta',
+                    description: 'Loft de estilo industrial con techos altos y vigas a la vista. Ambiente único con cocina integrada, doble altura y entrepiso. Perfecto para profesionales creativos o pareja joven.',
+                    location: 'Villa Crespo, CABA',
+                    price: 195000,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    area: 75,
+                    images: [
+                        'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Terreno en Zona Residencial',
+                    type: 'terreno',
+                    status: 'venta',
+                    description: 'Excelente terreno en zona residencial consolidada. Servicios completos: agua, luz, gas, cloacas. Ideal para construir la casa de tus sueños. Ubicación privilegiada cerca de colegios y comercios.',
+                    location: 'San Isidro, Zona Norte',
+                    price: 180000,
+                    bedrooms: 0,
+                    bathrooms: 0,
+                    area: 450,
+                    images: [
+                        'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop'
+                    ]
+                },
+                {
+                    title: 'Mono Ambiente Amoblado Centro',
+                    type: 'apartamento',
+                    status: 'alquiler',
+                    description: 'Mono ambiente ideal para estudiante o profesional. Totalmente amoblado y equipado, listo para entrar. Excelente ubicación céntrica, a pasos de subte y facultades.',
+                    location: 'Microcentro, CABA',
+                    price: 950,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    area: 32,
+                    images: [
+                        'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop'
+                    ]
+                }
+            ];
+
+            let created = 0;
+            let errors = 0;
+
+            for (let i = 0; i < properties.length; i++) {
+                const property = properties[i];
+
+                try {
+                    addStatus('info', `Creando: ${property.title}...`);
+
+                    // Generate unique slug
+                    const slug = await generateUniqueSlug(property.title);
+
+                    // Prepare property data
+                    const propertyData = {
+                        ...property,
+                        slug: slug,
+                        userId: currentUser.uid,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+
+                    // Save to Firestore
+                    await firebaseDB.collection('properties').add(propertyData);
+
+                    addStatus('success', `✓ Creada: ${property.title} (slug: ${slug})`);
+                    created++;
+
+                } catch (error) {
+                    console.error('Error creating property:', error);
+                    addStatus('error', `✗ Error: ${property.title} - ${error.message}`);
+                    errors++;
+                }
+            }
+
+            addStatus('info', `\n📊 Resumen: ${created} propiedades creadas exitosamente, ${errors} errores`);
+
+            createBtn.disabled = false;
+            createBtn.innerHTML = '✓ Proceso Completado';
+
+            setTimeout(() => {
+                createBtn.innerHTML = 'Crear Propiedades de Ejemplo';
+            }, 3000);
+        }
+
+        function addStatus(type, message) {
+            const div = document.createElement('div');
+            div.className = `status-item ${type}`;
+            div.textContent = message;
+            statusContent.appendChild(div);
+
+            // Scroll to bottom
+            statusDiv.scrollTop = statusDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>
